@@ -23,6 +23,7 @@
 /* Input and Button Styling */
 .input-group {
     margin-bottom: 25px;
+    margin-left: -10px; /* Move the text boxes slightly to the left */
 }
 
 .input-group input {
@@ -31,6 +32,7 @@
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-left: -10px; /* Move input to the left */
 }
 
 /* Submit Button Styling */

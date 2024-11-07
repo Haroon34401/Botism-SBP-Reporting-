@@ -1,0 +1,170 @@
+/* Header Styling */
+.dashboard-header {
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #c54c4cd4, #959e9796);
+    color: white;
+    width: 100%;
+    position: relative;
+    left: 50%;
+    margin-left: -50%;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #444951;
+    height: 100px;
+}
+
+/* Logo Section */
+.logo-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.stress-logo {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+/* Header Left Section */
+.header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.header-info h2 {
+    font-size: 1.3em;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    color: #ffffff;
+    margin-right: 15px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #a3e4d7;
+}
+
+/* Header Right Section */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #b0e7a1;
+    border-radius: 4px;
+    background-color: #f1f3f8;
+    color: #ffffff;
+    outline: none;
+}
+
+.settings-btn,
+.user-btn {
+    margin-right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.settings-btn:hover,
+.user-btn:hover {
+    color: #a3e4d7;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+    .dashboard-header {
+        flex-direction: column; /* Stack header items vertically */
+        height: auto;
+        padding: 20px;
+    }
+
+    .header-left {
+        margin-bottom: 15px;
+    }
+
+    .logo-section {
+        flex-direction: column; /* Stack logo and date range vertically */
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack navigation links vertically */
+        margin-top: 15px;
+    }
+
+    .nav-links a {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header-right {
+        margin-top: 10px; /* Add margin between header sections */
+        justify-content: center;
+    }
+
+    .search-bar {
+        width: 100%; /* Make search bar full width */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .settings-btn,
+    .user-btn {
+        font-size: 1em; /* Adjust button sizes for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-header {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .nav-links a {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header-info h2 {
+        font-size: 1.1em;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stress-logo {
+        width: 60px; /* Adjust logo size for smaller screens */
+        margin-bottom: 10px;
+    }
+}

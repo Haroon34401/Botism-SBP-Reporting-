@@ -1,0 +1,82 @@
+/* Footer Container Styling */
+.dashboard-footer {
+    padding: 50px 20px; /* Increase padding for more height */
+    background: linear-gradient(90deg, #c54c4cd4, #959e9796);
+    color: #0d0c0c;
+    text-align: center;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    box-sizing: border-box;
+}
+
+/* Style for Footer Links and Social Links */
+.footer-links a, .social-links a, .quick-links a {
+    color: #ffffff;
+    margin: 0 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.footer-links a:hover, .social-links a:hover, .quick-links a:hover {
+    text-decoration: underline;
+}
+
+/* Newsletter Signup Styling */
+.newsletter-signup {
+    margin-top: 15px;
+}
+
+.newsletter-signup input[type="email"] {
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+.newsletter-signup button {
+    padding: 5px 10px;
+    background-color: #a3e4d7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+}
+
+.newsletter-signup button:hover {
+    background-color: #82ca9d;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-footer {
+        padding: 20px;
+    }
+
+    .footer-links, .newsletter-signup {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .newsletter-signup input[type="email"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

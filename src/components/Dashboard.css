@@ -1,0 +1,83 @@
+/* Dashboard Container Styling */
+.dashboard-container {
+    padding: 20px;
+    background-color: #e9e2e2; /* Soft light gray for a neutral background */
+    min-height: 100vh;
+}
+
+/* Dashboard Content Section */
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+/* Individual Section Styling */
+.section {
+    background-color: #d4c9c9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 100px;
+}
+
+/* Graph Sections Styling */
+.section:nth-child(5),
+.section:nth-child(6) {
+    background-color: #ded3d3;
+    font-weight: bold;
+    padding: 10px 20px 20px 20px; /* Reduced top padding to move graph content upward */
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 300px;
+    width: 85%;
+    margin: 5% auto; /* Reduced top margin to move graph containers upward */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section:nth-child(5) h3,
+.section:nth-child(6) h3 {
+    margin-bottom: 10px; /* Adjusted space below title to tighten layout */
+    font-size: 1.5em;
+    color: #282c34;
+}
+
+/* Date Range Input Section */
+.date-range {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.date-input {
+    margin-left: 5px;
+    margin-right: 20px;
+    padding: 5px;
+    border: 1px solid #c7abab;
+    border-radius: 4px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-sections {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        height: auto;
+    }
+
+    .section:nth-child(5),
+    .section:nth-child(6) {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+}

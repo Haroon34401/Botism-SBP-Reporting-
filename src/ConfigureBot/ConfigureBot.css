@@ -1,0 +1,122 @@
+/* Change the background color of the entire page */
+body {
+    background-color: #c6b7b7;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for the entire page */
+.configure-bot-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+}
+
+/* Main form container */
+.configure-bot-form-container {
+    flex: 1;
+    margin: 20px auto;
+    max-width: 90%;
+    padding: 20px;
+    background-color: #e9cfcf;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive heading */
+.configure-bot-form-container h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+.configure-bot-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Adjust label styling */
+.form-group label {
+    font-size: 1em;
+    color: #333;
+}
+
+/* Adjust inputs and selects for responsive design */
+.form-group input,
+.form-group select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #e6dcdc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive styling for Reporting Month input */
+.form-group.reporting-month input {
+    width: 100%;
+}
+
+/* Styling for larger screens */
+@media (min-width: 768px) {
+    .configure-bot-form-container {
+        max-width: 700px;
+    }
+
+    .form-group label {
+        font-size: 1.1em;
+    }
+}
+
+/* Responsive checkbox */
+.form-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Test and error messages */
+.test-result,
+.error-message {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1em;
+}
+
+/* Responsive footer */
+footer {
+    flex-shrink: 0;
+    margin-top: auto;
+    padding: 10px;
+    text-align: center;
+}

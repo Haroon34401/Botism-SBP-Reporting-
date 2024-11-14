@@ -1,0 +1,150 @@
+.report-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f9f9f9; /* Added subtle background color */
+    border-radius: 8px; /* Rounded corners for a polished look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.reporting-title {
+    text-align: center;
+    font-size: 26px; /* Slightly larger for emphasis */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333; /* Darker color for contrast */
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #555; /* Soft color for better readability */
+}
+
+.filters select,
+.filters input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.filters select:focus,
+.filters input:focus {
+    border-color: #007BFF; /* Highlight on focus */
+    outline: none;
+}
+
+.filters .filter-item.date-range {
+    width: 70%; /* Adjust width if necessary */
+}
+
+.download-btn {
+    padding: 12px 60px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    align-self: center;
+    transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+.reports-table {
+    margin-top: 30px;
+    overflow-x: auto; /* Ensures table is scrollable on small screens */
+}
+
+.reports-table table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.reports-table th,
+.reports-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+    word-wrap: break-word; /* Ensures text wraps within table cells */
+}
+
+.reports-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.reports-table td button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.reports-table td button:hover {
+    background-color: #0056b3;
+}
+
+.reports-table td button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .filters {
+        grid-template-columns: 1fr; /* Stacks items in a single column on small screens */
+    }
+
+    .download-btn {
+        width: 100%; /* Full width button on smaller screens */
+        padding: 12px;
+    }
+}

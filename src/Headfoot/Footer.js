@@ -2,7 +2,6 @@
 
 import React from 'react';
 import './Footer.css';
-import '../components/Dashboard.css';
  // Ensure this path points to the CSS file
 
 function Footer() {

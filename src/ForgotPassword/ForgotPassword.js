@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ForgotPassword.css'; // Ensure this matches the file structure
-import '../styles.css';  // Assuming styles.css is in the same directory as your component
+
 
 
 const ForgotPassword = () => {

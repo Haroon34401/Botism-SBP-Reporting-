@@ -1,0 +1,70 @@
+
+{
+    "columns": [
+      {
+        "key": "id",
+        "label": "Report ID"
+      },
+      {
+        "key": "requestedTime",
+        "label": "Requested Time"
+      },
+      {
+        "key": "completionTime",
+        "label": "Completion Time"
+      },
+      {
+        "key": "duration",
+        "label": "Duration (seconds)"
+      },
+      {
+        "key": "status",
+        "label": "Status"
+      },
+      {
+        "key": "reportType",
+        "label": "Report Type"
+      }
+    ],
+    "data": [
+      {
+        "id": "1",
+        "requestedTime": "2024-11-01T08:00:00Z",
+        "completionTime": "2024-11-01T08:45:00Z",
+        "duration": "45",
+        "status": "Completed",
+        "reportType": "A03"
+        
+      },
+      {
+        "id": "2",
+        "requestedTime": "2024-11-02T09:00:00Z",
+        "completionTime": "2024-11-02T09:30:00Z",
+        "duration": "30",
+        "status": "In-progress",
+        "reportType": "A04"
+    
+      },
+      {
+        "id": "3",
+        "requestedTime": "2024-11-03T10:00:00Z",
+        "completionTime": "2024-11-03T10:15:00Z",
+        "duration": "15",
+        "status": "Completed",
+        "reportType": "A05"
+        
+      },
+      {
+        "id": "4",
+        "requestedTime": "2024-11-04T11:00:00Z",
+        "completionTime": "2024-11-04T11:45:00Z",
+        "duration": "45",
+        "status": "Completed",
+        "reportType": "A07"
+        
+      }
+    ]
+  }
+  
+  
+  

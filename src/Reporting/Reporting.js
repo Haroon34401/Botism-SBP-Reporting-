@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../Headfoot/Header';  // Import Header component
 import Footer from '../Headfoot/Footer';  // Import Footer component
+import { useNavigate } from 'react-router-dom';  // Import useNavigate hook
 import './Reporting.css';  // Import custom CSS for this page
 
 const Reporting = () => {
@@ -9,6 +10,7 @@ const Reporting = () => {
   const [currentPage, setCurrentPage] = useState(1); // To manage pagination
   const reportsPerPage = 10; // Number of reports per page
   const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'asc' }); // To handle sorting
+  const navigate = useNavigate();  // Hook for navigation
 
   // Filter States
   const [reportType, setReportType] = useState('');
@@ -45,7 +47,7 @@ const Reporting = () => {
             requestedTime: requestedTimeFormatted,  // Only time
             completionTime: completionTimeFormatted,  // Only time
             duration: durationInMinutes.toString(), // Duration in minutes
-            status: report.status || 'In-progress',   // Default to 'Pending' if no status exists
+            status: report.status || 'In-progress',   // Default to 'In-progress' if no status exists
           };
         });
 
@@ -105,6 +107,12 @@ const Reporting = () => {
     setReports(reports.filter((report) => report.id !== reportId));
   };
 
+  // Handle row click with color assignment
+  const handleRowClick = (report, color) => {
+    // Navigate to the ReportSummary page and pass reportId and color
+    navigate('/ReportSummary', { state: { reportId: report.id, color: color } });
+  };
+
   return (
     <div className="reporting-screen">
       <Header />
@@ -159,16 +167,25 @@ const Reporting = () => {
             </thead>
             <tbody>
               {currentReports.length > 0 ? (
-                currentReports.map((report) => (
-                  <tr key={report.id}>
-                    {columns.map((column) => (
-                      <td key={column.key}>{report[column.key]}</td>
-                    ))}
-                    <td>
-                      <button onClick={() => handleDelete(report.id)}>Delete</button>
-                    </td>
-                  </tr>
-                ))
+                currentReports.map((report) => {
+                  // Assign color dynamically (e.g., orange for A03)
+                  const rowColor = report.reportType === 'A03' ? 'yellow' : 'transparent';  // Set color for A03 rows
+
+                  return (
+                    <tr 
+                      key={report.id} 
+                      onClick={() => handleRowClick(report, rowColor)} 
+                      style={{ backgroundColor: rowColor }} // Apply color to the row
+                    >
+                      {columns.map((column) => (
+                        <td key={column.key}>{report[column.key]}</td>
+                      ))}
+                      <td>
+                        <button onClick={() => handleDelete(report.id)}>Delete</button>
+                      </td>
+                    </tr>
+                  );
+                })
               ) : (
                 <tr>
                   <td colSpan={columns.length + 1}>No reports found</td>

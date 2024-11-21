@@ -12,7 +12,7 @@ const ReportRaw = () => {
 
   // Fetch combined data (columns + reports)
   useEffect(() => {
-    fetch('./Jsondata/reportDataWithColumns.json')
+    fetch('./Jsondata/Rawdata.json')
       .then((response) => response.json())
       .then((data) => {
         // Set columns and reports from the same file

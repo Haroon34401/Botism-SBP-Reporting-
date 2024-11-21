@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../Headfoot/Header';  // Import Header component
-import Footer from '../Headfoot/Footer';  // Import Footer component
-import './ReportData.css';  // Import custom CSS for this page
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import Header from '../Headfoot/Header'; // Import Header component
+import Footer from '../Headfoot/Footer'; // Import Footer component
+import './ReportData.css'; // Import custom CSS for this page
 
 const ReportData = () => {
   const [reports, setReports] = useState([]); // To store report data
@@ -10,9 +11,11 @@ const ReportData = () => {
   const reportsPerPage = 10; // Number of reports per page
   const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'asc' }); // To handle sorting
 
+  const navigate = useNavigate(); // Initialize navigation
+
   // Fetch combined data (columns + reports)
   useEffect(() => {
-    fetch('./Jsondata/reportDataWithColumns.json')
+    fetch('./Jsondata/ReportData.json')
       .then((response) => response.json())
       .then((data) => {
         // Set columns and reports from the same file
@@ -37,14 +40,14 @@ const ReportData = () => {
 
           return {
             ...report,
-            requestedTime: requestedTimeFormatted,  // Only time
-            completionTime: completionTimeFormatted,  // Only time
+            requestedTime: requestedTimeFormatted, // Only time
+            completionTime: completionTimeFormatted, // Only time
             duration: durationInMinutes.toString(), // Duration in minutes
-            status: report.status || 'In-progress',   // Default to 'In-progress' if no status exists
+            status: report.status || 'In-progress', // Default to 'In-progress' if no status exists
           };
         });
 
-        setReports(updatedReports);  // Store updated report data
+        setReports(updatedReports); // Store updated report data
       })
       .catch((error) => console.error('Error fetching combined data:', error));
   }, []);
@@ -86,6 +89,11 @@ const ReportData = () => {
     currentPage * reportsPerPage
   );
 
+  // Navigate to Report Raw with selected report data
+  const handleRowClick = (report) => {
+    navigate('/ReportRaw', { state: { report } }); // Pass the selected report to Report Raw
+  };
+
   return (
     <div className="report-data-screen">
       <Header />
@@ -106,7 +114,7 @@ const ReportData = () => {
             <tbody>
               {currentReports.length > 0 ? (
                 currentReports.map((report) => (
-                  <tr key={report.id}>
+                  <tr key={report.id} onClick={() => handleRowClick(report)}>
                     {columns.map((column) => (
                       <td key={column.key}>{report[column.key]}</td>
                     ))}

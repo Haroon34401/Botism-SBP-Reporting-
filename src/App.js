@@ -6,9 +6,10 @@ import ForgotPassword from './ForgotPassword/ForgotPassword'; // Correct path fo
 import Dashboard from './components/Dashboard';
 import ConfigureBot from './ConfigureBot/ConfigureBot';
 import Reporting from './Reporting/Reporting'; // Import Reporting screen
-import RepInside from './RepInside/RepInside';
+import ReportInsight from './ReportInsight/ReportInsight';
 import ReportData from './ReportData/ReportData';  // Correct import for default export
 import ReportRaw from './RepRaw/ReportRaw'; // Make sure the path is correct
+import { ColorProvider } from './context/ColorContext';
 
 
 import './App.css';
@@ -16,6 +17,7 @@ import ReportSummary from './ReportSummary/ReportSummary';
 
 function App() {
   return (
+    <ColorProvider>
     <Router>
       <div className="App">
         <Routes>
@@ -27,13 +29,14 @@ function App() {
           <Route path="/ConfigureBot" element={<ConfigureBot />} /> {/* Route for ConfigureBot */}
           <Route path="/reporting" element={<Reporting />} /> {/* Route for Reporting Screen */}
           <Route path="/ReportSummary" element={<ReportSummary />} />
-          <Route path="/RepInside" element={<RepInside />} />
+          <Route path="/ReportInsight" element={<ReportInsight />} />
           <Route path="/ReportData" element={<ReportData />} />
           <Route path="/ReportRaw" element={<ReportRaw />} />
 
         </Routes>
       </div>
     </Router>
+    </ColorProvider>
   );
 }
 

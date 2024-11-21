@@ -12,7 +12,7 @@ function Header() {
                     <div className="header-info">
                         <h2>Botism SBP Reporting</h2>
                     </div>
-                    <a href="#reporting">Reporting</a>
+                    <a href="#report">Reporting</a>
                     <a href="#email-management">Email Management</a>
                     <a href="#error">Error</a>
                     <a href="#monitoring">Monitoring</a>

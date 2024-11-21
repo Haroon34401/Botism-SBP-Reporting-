@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../Headfoot/Header';  // Import Header component
-import Footer from '../Headfoot/Footer';  // Import Footer component
-import './ReportSummary.css';  // Import custom CSS for this page
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import Header from '../Headfoot/Header'; // Import Header component
+import Footer from '../Headfoot/Footer'; // Import Footer component
+import './ReportSummary.css'; // Import custom CSS for this page
+import { ColorContext } from '../context/ColorContext'; // Import ColorContext
 
-const ReportSummary = () => {
+const ReportSummary = ({ selectedColor }) => {
+  const { color } = useContext(ColorContext); // Access color state from context
   const [reports, setReports] = useState([]); // To store report data
   const [columns, setColumns] = useState([]); // To store column names
   const [currentPage, setCurrentPage] = useState(1); // To manage pagination
   const reportsPerPage = 10; // Number of reports per page
   const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'asc' }); // To handle sorting
+  const navigate = useNavigate(); // For navigation to Report Insight screen
 
   // Fetch combined data (columns + reports)
   useEffect(() => {
-    fetch('./Jsondata/reportDataWithColumns.json')
+    fetch('/Jsondata/SummaryData.json')
       .then((response) => response.json())
       .then((data) => {
-        // Set columns and reports from the same file
         setColumns(data.columns);
         const updatedReports = data.data.map((report) => {
-          // Format Requested Time and Completion Time to show only time (HH:mm)
           const requestedTime = new Date(report.requestedTime);
           const completionTime = new Date(report.completionTime);
 
@@ -32,22 +34,22 @@ const ReportSummary = () => {
             minute: '2-digit',
           });
 
-          // Calculate the duration in minutes
-          const durationInMinutes = Math.round((completionTime - requestedTime) / 1000); // Duration in minutes
+          const durationInMinutes = Math.round((completionTime - requestedTime) / 1000);
 
           return {
             ...report,
-            requestedTime: requestedTimeFormatted,  // Only time
-            completionTime: completionTimeFormatted,  // Only time
-            duration: durationInMinutes.toString(), // Duration in minutes
-            status: report.status || 'In-progress',   // Default to 'In-progress' if no status exists
+            requestedTime: requestedTimeFormatted,
+            completionTime: completionTimeFormatted,
+            duration: durationInMinutes.toString(),
+            status: report.status || 'In-progress',
+            color: report.color || color, // Use color from context if not in report data
           };
         });
 
-        setReports(updatedReports);  // Store updated report data
+        setReports(updatedReports); // Store updated report data
       })
       .catch((error) => console.error('Error fetching combined data:', error));
-  }, []);
+  }, [color]); // Depend on color to re-fetch when it changes
 
   // Handle sorting
   const handleSort = (column) => {
@@ -58,17 +60,15 @@ const ReportSummary = () => {
         let valueA = a[column];
         let valueB = b[column];
 
-        // Check if the column data is a number
+        // Handle sorting for specific data types
         if (typeof valueA === 'string' && !isNaN(valueA)) valueA = parseFloat(valueA);
         if (typeof valueB === 'string' && !isNaN(valueB)) valueB = parseFloat(valueB);
 
-        // Check if the column data is a date
         if (Date.parse(valueA) && Date.parse(valueB)) {
           valueA = new Date(valueA);
           valueB = new Date(valueB);
         }
 
-        // Compare values based on the direction
         if (valueA < valueB) return direction === 'asc' ? -1 : 1;
         if (valueA > valueB) return direction === 'asc' ? 1 : -1;
         return 0;
@@ -79,6 +79,11 @@ const ReportSummary = () => {
 
   // Handle page change
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Handle row click to navigate to Report Insight screen
+  const handleRowClick = (report) => {
+    navigate('/ReportInsight', { state: { report } }); // Pass the selected report to Report Insight
+  };
 
   // Get current reports based on pagination
   const currentReports = reports.slice(
@@ -106,7 +111,12 @@ const ReportSummary = () => {
             <tbody>
               {currentReports.length > 0 ? (
                 currentReports.map((report) => (
-                  <tr key={report.id}>
+                  <tr
+                    key={report.id}
+                    style={{ backgroundColor: selectedColor || 'yellow' }}
+                    onClick={() => handleRowClick(report)} // Add click handler
+                    className="clickable-row"
+                  >
                     {columns.map((column) => (
                       <td key={column.key}>{report[column.key]}</td>
                     ))}
@@ -123,6 +133,12 @@ const ReportSummary = () => {
 
         {/* Pagination controls */}
         <div className="pagination">
+          <button
+            onClick={() => paginate(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
           {Array.from({ length: Math.ceil(reports.length / reportsPerPage) }, (_, index) => (
             <button
               key={index + 1}
@@ -132,6 +148,12 @@ const ReportSummary = () => {
               {index + 1}
             </button>
           ))}
+          <button
+            onClick={() => paginate(currentPage + 1)}
+            disabled={currentPage === Math.ceil(reports.length / reportsPerPage)}
+          >
+            Next
+          </button>
         </div>
       </div>
       <Footer />

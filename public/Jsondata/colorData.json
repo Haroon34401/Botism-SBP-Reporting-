@@ -1,0 +1,21 @@
+[
+    {
+      "reportId": "A03",
+      "color": "yellow"
+    },
+    {
+      "reportId": "A04",
+      "color": "green"
+    },
+    {
+      "reportId": "A05",
+      "color": "red"
+    },
+    {
+        "reportId": "A07",
+        "color": "orange"
+      }
+  ]
+  
+  
+  
